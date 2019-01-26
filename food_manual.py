@@ -10,8 +10,8 @@ def get_manual(food_name):
 
             driver = webdriver.Chrome() #setup driver
             #optional headless
-            option_ = Options()
-            option_.add_argument('headless')
+            # option_ = Options()
+            # option_.add_argument('headless')
 
             driver.get(search_url)
 
@@ -31,7 +31,7 @@ def get_manual(food_name):
             # food_manual_page = base_url + food_manual_page
             print(food_manual_name, food_manual_page, sep='\n')
 
-            driver.quit()
+            #driver.quit()
         except:
             base_url = 'https://www.xiachufang.com'
             search__url = 'https://www.xiachufang.com/search/?keyword='
@@ -43,6 +43,8 @@ def get_manual(food_name):
             p_tag = div_tag.find('p', {'class':'name'})
             food_page  = p_tag.find('a').get('href')
             food_manual_page = base_url + food_page
+        
+        driver.quit()
         return food_manual_page
 
     
